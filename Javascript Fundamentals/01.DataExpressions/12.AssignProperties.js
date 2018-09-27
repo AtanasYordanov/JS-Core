@@ -1,4 +1,4 @@
-function solve([k1, v1, k2, v2, k3, v3]){
+function solve([k1, v1, k2, v2, k3, v3]) {
     let obj = {};
     obj[k1] = v1;
     obj[k2] = v2;

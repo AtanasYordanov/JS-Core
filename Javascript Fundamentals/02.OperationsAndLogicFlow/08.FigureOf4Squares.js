@@ -14,7 +14,7 @@ function solve(n) {
         console.log(filler);
     }
     console.log(base);
-    for (let i = 0; i <fillersCount; i++) {
+    for (let i = 0; i < fillersCount; i++) {
         console.log(filler);
     }
     console.log(base);

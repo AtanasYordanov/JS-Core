@@ -1,4 +1,4 @@
-function solve([num, precision]){
+function solve([num, precision]) {
     precision = precision > 15 ? 15 : precision;
     console.log(+num.toFixed(precision));
 }
