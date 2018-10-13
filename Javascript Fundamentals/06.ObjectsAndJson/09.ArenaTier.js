@@ -20,6 +20,7 @@ function solve(array) {
 
                 if (firstGladiator && secondGladiator &&
                     [...firstGladiator.entries()].some(s => secondGladiator.get(s[0]))) {
+
                     let firstTotalSkill = [...firstGladiator.entries()].map(a => a[1]).reduce((a, b) => a + b);
                     let secondTotalSkill = [...secondGladiator.entries()].map(a => a[1]).reduce((a, b) => a + b);
 
@@ -33,12 +34,12 @@ function solve(array) {
         });
     [...gladiators.entries()]
         .sort((a, b) => {
-            return [...b[1].values()].reduce((acc, cur) => acc + cur) -
-                [...a[1].values()].reduce((acc, cur) => acc + cur)
+            return [...b[1].values()].reduce((a, b) => a + b) -
+                [...a[1].values()].reduce((a, b) => a + b)
                 || a[0].localeCompare(b[0])
         })
         .forEach(g => {
-            let totalSkill = [...g[1].values()].reduce((acc, cur) => acc + cur);
+            let totalSkill = [...g[1].values()].reduce((a, b) => a + b);
             console.log(`${g[0]}: ${totalSkill} skill`);
             [...g[1].entries()]
                 .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
