@@ -18,8 +18,8 @@ function solve(array) {
                 let firstGladiator = gladiators.get(fighters[0]);
                 let secondGladiator = gladiators.get(fighters[1]);
 
-                if (firstGladiator && secondGladiator && [...firstGladiator.entries()]
-                    .some(s => secondGladiator.get(s[0]))) {
+                if (firstGladiator && secondGladiator &&
+                    [...firstGladiator.entries()].some(s => secondGladiator.get(s[0]))) {
                     let firstTotalSkill = [...firstGladiator.entries()].map(a => a[1]).reduce((a, b) => a + b);
                     let secondTotalSkill = [...secondGladiator.entries()].map(a => a[1]).reduce((a, b) => a + b);
 
