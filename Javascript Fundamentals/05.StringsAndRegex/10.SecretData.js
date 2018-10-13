@@ -1,7 +1,7 @@
 function solve(array) {
     let regex = /(\*[A-Z][a-zA-Z]*|\+[0-9-]{10}|[!_][a-zA-Z0-9]+)(?= |\t|$)/g;
     array.forEach(e => {
-        console.log(e.replace(regex, (m) => '|'.repeat(m.length)))
+        console.log(e.replace(regex, (m) => '|'.repeat(m.length)));
     });
 }
 
