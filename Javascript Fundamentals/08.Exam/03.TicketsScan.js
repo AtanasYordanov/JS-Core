@@ -39,8 +39,7 @@ function solve(text, command) {
 
     function getCompany() {
         let company = text.match(companyRegex)[0];
-        company = company.substring(2, company.length - 1).replace('*', ' ');
-        return company;
+        return company.substring(2, company.length - 1).replace('*', ' ');
     }
 }
 
