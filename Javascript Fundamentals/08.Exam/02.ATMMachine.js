@@ -25,7 +25,6 @@ function solve(lines) {
                         if (collected + b <= withdrawMoney) {
                             collected += b;
                             atm.splice(atm.indexOf(b), 1);
-
                         }
                     });
                 console.log(`You get ${withdrawMoney}$. Account balance: ${balance - withdrawMoney}$. Thank you!`);
