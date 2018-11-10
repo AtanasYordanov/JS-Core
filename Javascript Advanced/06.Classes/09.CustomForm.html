@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <span>I am Wrapper</span>
+    <input type="text" id="username"/>
+    <input type="text" id="password"/>
+</div>
+<div id="root">
+    <span>I am Root</span>
+</div>
+<script>
+    let result = (() => {
+        class Textbox {
+
+            constructor(selector, regex) {
+                this.selector = selector;
+                this.elements = $(selector);
+                this._invalidSymbols = regex;
+                this._value = $(this.selector).val();
+
+                let self = this;
+                $(selector).on('input', function () {
+                    self.value = $(this).val();
+                });
+            }
+
+            get value() {
+                return this._value;
+            }
+
+            set value(value) {
+                $(this.selector).val(value);
+                this._value = value;
+            }
+
+            isValid() {
+                return !this._invalidSymbols.test(this._value);
+            }
+        }
+
+        class Form {
+
+            constructor() {
+                this._element = $('<div>').addClass('form');
+                this.textboxes = arguments;
+                for (let textbox of this.textboxes) {
+                    this._element.append($(textbox.elements));
+                }
+            }
+
+            submit() {
+                let allValid = true;
+                for (let textbox of this.textboxes) {
+                    if (textbox.isValid()) {
+                        $(textbox.elements).css('border', '2px solid green');
+                    } else {
+                        $(textbox.elements).css('border', '2px solid red');
+                        allValid = false;
+                    }
+                }
+                return allValid;
+            }
+
+            attach(selector) {
+                $(selector).append(this._element);
+            }
+        }
+
+        return {Textbox, Form};
+    })();
+
+    let Textbox = result.Textbox;
+    let Form = result.Form;
+    let username = new Textbox("#username", /[^a-zA-Z0-9]/);
+    let password = new Textbox("#password", /[^a-zA-Z]/);
+    username.value = "username";
+    password.value = "password2";
+    let form = new Form(username, password);
+    form.attach("#root");
+</script>
+</body>
+</html>
